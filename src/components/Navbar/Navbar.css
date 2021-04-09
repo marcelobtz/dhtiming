@@ -1,0 +1,11 @@
+.container {
+    flex-grow: 1;
+}
+
+.menu-button {
+    margin-right: 2px;
+}
+
+.title {
+    flex-grow: 1
+}
