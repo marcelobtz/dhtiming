@@ -172,20 +172,20 @@ class Event extends Component {
                 break;
         }
 
-        axios.post(`${URL_API}/stage-times-list.php`, body).then(result => {
-            result.data.map((time) => {
-                time.TRIPULACION = time.TRIPULACION.replace(" ", "</br>")
-            })
+        axios.post(`${URL_API}/general-times-list.php`, body).then(result => {
+            // result.data.map((time) => {
+            //     time.TRIPULACION = time.TRIPULACION.replace(" ", "</br>")
+            // })
 
-            this.setState({stagesTimes: result.data})
-            console.log("Stage Times", this.state.stagesTimes)
+            this.setState({generalTimes: result.data})
+            console.log("General Times", this.state.generalTimes)
 
-            axios.post(`${URL_API}/general-times-list.php`, body).then(result => {
-                this.setState({generalTimes: result.data})
-                console.log("General Times", this.state.generalTimes)
+            // axios.post(`${URL_API}/general-times-list.php`, body).then(result => {
+            //     this.setState({generalTimes: result.data})
+            //     console.log("General Times", this.state.generalTimes)
 
-                this.setState({ showLoader: false })
-            })
+            //     this.setState({ showLoader: false })
+            // })
         })
     }
 
