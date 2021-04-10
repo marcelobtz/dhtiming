@@ -1,4 +1,10 @@
+.title {
+    margin-top: 10px !important;
+}
+.events-container {
+    padding: 20px;
+}
 .events-container .item {
     margin-bottom: 10px;
-    background-color: #eee;
+    background-color: #fff;
 }

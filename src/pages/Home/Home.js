@@ -4,6 +4,7 @@ import { Button, Typography } from '@material-ui/core';
 import NavBar from "../../components/Navbar/Navbar";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 import './Home.css';
 import axios from "axios";
 const URL_API = process.env.REACT_APP_URL_API;
@@ -30,13 +31,13 @@ class Home extends Component {
         <div>
             <NavBar title="DH TIMING"/>
             <div>
-                <Typography variant="h6" align="center" className="title">
+                <Typography variant="h5" align="center" className="title">
                     TIEMPOS ONLINE
                 </Typography>
             </div>
             <div className="events-container">
             {this.state.events.map(event => 
-                <Link to={`/event/${event.CODIGO}`}><Card className="item" key={event.CODIGO}>
+                <Link to={`/event/${event.CODIGO}`} style={{textDecoration: 'none'}}><Card className="item" key={event.CODIGO}>
                     <CardContent>
                         <Typography align="left" className="event-title">
                             {event.NOMBRE2}
@@ -51,7 +52,13 @@ class Home extends Component {
                             {event.FECHA}
                         </Typography>
                     </CardContent>
-                </Card></Link>
+                    <CardActions>
+                    <Button variant="contained" color="primary">
+                        VER TIEMPOS
+                    </Button>
+                    </CardActions>
+                </Card>
+                </Link>
             )}
             </div>
         </div>

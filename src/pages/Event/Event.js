@@ -186,8 +186,7 @@ class Event extends Component {
 
                 this.setState({ showLoader: false })
             }).catch((error) => {
-                console.log("ERROR", error)
-                console.log("body", body)
+                
             })
         })
     }
@@ -212,68 +211,72 @@ class Event extends Component {
         <div>
             <NavBar title="DH TIMING"/>
             <div>
-                <Typography variant="h6" align="center" className="title">
-                    {this.state.id}
+                <Typography variant="h5" align="center" className="title">
+                    TIEMPOS
                 </Typography>
             </div>
-            <div className="container">
-                <div className="select">
-                    <FormControl className="selectFormControl">
-                        <InputLabel id="">Grupo</InputLabel>
-                        <Select
-                            labelId=""
-                            id=""
-                            value={this.state.group}
-                            onChange={this.handleSelectGroupChange.bind(this)}
-                        >
-                        {this.state.groups.map(group =>
-                            <MenuItem key={group.NOMBRE} value={group.NOMBRE}>{group.NOMBRE}</MenuItem>
-                        )}
-                        </Select>
-                    </FormControl>
-                </div>
-                <div className="select">
-                    <FormControl className="selectFormControl">
-                        <InputLabel id="">Clase</InputLabel>
-                        <Select
-                            labelId=""
-                            id=""
-                            value={this.state.class}
-                            onChange={this.handleSelectClassChange.bind(this)}
-                        >
-                        {this.state.classes.map(className =>
-                            <MenuItem key={className.NOMBRE} value={className.NOMBRE}>{className.NOMBRE}</MenuItem>
-                        )}
-                        </Select>
-                    </FormControl>
-                </div>
-                <div className="select">
-                    <FormControl className="selectFormControl">
-                        <InputLabel id="">Prueba</InputLabel>
-                        <Select
-                            labelId=""
-                            id=""
-                            value={this.state.stage}
-                            onChange={this.handleSelectStageChange.bind(this)}
-                        >
-                        {this.state.stages.map(stage =>
-                            <MenuItem key={stage.NOMBRE} value={stage.NOMBRE}>{stage.NOMBRE}</MenuItem>
-                        )}
-                        </Select>
-                    </FormControl>
-                </div>
-                {this.state.showLoader &&
-                    <div className="loader">
-                        <LinearProgress />
+            <div className="event-page-container">
+                <div className="filters">
+                    <div className="select">
+                        <FormControl className="selectFormControl">
+                            <InputLabel id="">Grupo</InputLabel>
+                            <Select
+                                labelId=""
+                                id=""
+                                value={this.state.group}
+                                onChange={this.handleSelectGroupChange.bind(this)}
+                            >
+                            {this.state.groups.map(group =>
+                                <MenuItem key={group.NOMBRE} value={group.NOMBRE}>{group.NOMBRE}</MenuItem>
+                            )}
+                            </Select>
+                        </FormControl>
                     </div>
-                }
-                <div style={{ height: 400, width: '100%' }}>
-                    <h3>TIEMPOS PRUEBA</h3>
-                    <DataGrid rows={this.state.stagesTimes} columns={this.stageTimeColumns} />
+                    <div className="select">
+                        <FormControl className="selectFormControl">
+                            <InputLabel id="">Clase</InputLabel>
+                            <Select
+                                labelId=""
+                                id=""
+                                value={this.state.class}
+                                onChange={this.handleSelectClassChange.bind(this)}
+                            >
+                            {this.state.classes.map(className =>
+                                <MenuItem key={className.NOMBRE} value={className.NOMBRE}>{className.NOMBRE}</MenuItem>
+                            )}
+                            </Select>
+                        </FormControl>
+                    </div>
+                    <div className="select">
+                        <FormControl className="selectFormControl">
+                            <InputLabel id="">Prueba</InputLabel>
+                            <Select
+                                labelId=""
+                                id=""
+                                value={this.state.stage}
+                                onChange={this.handleSelectStageChange.bind(this)}
+                            >
+                            {this.state.stages.map(stage =>
+                                <MenuItem key={stage.NOMBRE} value={stage.NOMBRE}>{stage.NOMBRE}</MenuItem>
+                            )}
+                            </Select>
+                        </FormControl>
+                    </div>
+                    {this.state.showLoader &&
+                        <div className="loader">
+                            <LinearProgress />
+                        </div>
+                    }
                 </div>
-                <div style={{ height: 400, width: '100%' }}>
+                <div className="result-tables">
+                    <h3>TIEMPOS PRUEBA</h3>
+                    <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid rows={this.state.stagesTimes} columns={this.stageTimeColumns} autoPageSize={true} />
+                    </div>
                     <h3>TIEMPOS GENERAL</h3>
-                    <DataGrid rows={this.state.generalTimes} columns={this.generalTimeColumns} />
+                    <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid rows={this.state.generalTimes} columns={this.generalTimeColumns} autoPageSize={true} />
+                    </div>
                 </div>
             </div>
         </div>
